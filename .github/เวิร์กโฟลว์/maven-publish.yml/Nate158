@@ -1,0 +1,128 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+
+name: Maven Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Publish to GitHub Packages Apache Maven
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+     -name: diff --git a/content/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches.md "b/\340\271" \200\340\270\231\340\270\267\340\271\211\340\270\255\340\270\253\340\270\262/\340\270\204\340\270\ 245\340\270\261\340\270\207\340\271\200\340\270\201\340\271\207\340\270\232/configuring-branches-and-merges-in-your- พื้นที่เก็บข้อมูล/\340\270\201\340\270\262\340\270\243\340\270\201\340\270\263\340\270\253\340\270\231\340\270\224 -the-mergeability-of-pull-requests/about-protected-branches.md"
+ดัชนีความคล้ายคลึงกัน 71%
+เปลี่ยนชื่อจาก content/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches.md
+เปลี่ยนชื่อเป็น "\340\271\200\340\270\231\340\270\267\340\271\211\340\270\255\340\270\253\340\270\262/\340\270 \204\340\270\245\340\270\261\340\270\207\340\271\200\340\270\201\340\271\207\340\270\232/configuring-branches-and -merges-in-your-repository/\340\270\201\340\270\262\340\270\243\340\270\201\340\270\263\340\270\253\340\270\ 231\340\270\224-the-mergeability-of-pull-requests/about-protected-branches.md"
+ดัชนี 08f567b7b363..070d311aec91 100644
+--- a/content/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches.md
++++ "b/\340\271\200\340\270\231\340\270\267\340\271\211\340\270\255\340\270\253\340\270\262/\ 340\270\204\340\270\245\340\270\261\340\270\207\340\271\200\340\270\201\340\271\207\340\270\232/การกำหนดค่า- สาขาและผสานในที่เก็บของคุณ/\340\270\201\340\270\262\340\270\243\340\270\201\340\270\263\340\270\253\340 \270\231\340\270\224-the-mergeability-of-pull-requests/about-protected-branches.md"
+@@ -1,4 +1,86 @@
+ ---
++![แบนเนอร์](https://whitesource-resources.s3.amazonaws.com/ws-sig-images/Whitesource_Logo_178x44.png)  
++[![ สัญญา](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
++[![CI](https://github.com/whitesource-ps/ws-sbom-generator/actions/workflows/ci.yml/badge.svg)](https://github.com/whitesource-ps / ws-sbom-generator/actions/workflows/ci.yml)
++[![Python 3.6](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Blue_Python_3.6%2B_Shield_Badge.svg/86px-Blue_Python_3.6%2B_Shield_Badge.svg.png)]( https://www.python.org/downloads/release/python-360/)
++[![ปล่อย GitHub](https://img.shields.io/github/v/release/whitesource-ps/ws-sbom-generator)](https://github.com/whitesource-ps/ws- sbom - เครื่องหอม/รุ่น/ล่าสุด)  
++
+++ WS SBOM เครื่องกำเนิดไฟฟ้า SPDX 
++เครื่องมือ CLI และโอมเมจ Docker ทำรายงาน SBOM ใน [รูปแบบ SPDX](https://spdx.org)
+++ข้อนี้พร้อมรายงานในการควบคุม (กำหนด: **-s/WS_SCOPE**):
++ * สอบสินค้า - ตรวจสอบสินค้าที่เกี่ยวข้องโดยเฉพาะ
++ * สอบผลิตภัณฑ์ - ตรวจสอบผลิตภัณฑ์ที่เกี่ยวข้อง
++ * ไม่ได้ระบุแน่นอน - ประทักษิณเกี่ยวกับสินค้าภายในองค์กร
+++เครื่องมือนี้ใช้แพ็คเกจ [spdx-tools] (https://github.com/spdx/tools) ที่แยกจากกัน
+++สามารถตรวจค่าเพิ่มเติมที่ WhiteSource ผ่าน `sbom_extra.json`
+++ ผู้เชี่ยวชาญสามารถ URL (กำหนดด้วย: **-a/WS_URL**) ช่วยจะเคลีย **saas**
++* ท้าทายตามประเภทรายงาน (กำหนดด้วย: **-t/WS_REPORT_TYPE**) ง่ายเอ๊งข้อบกพร่อง **เอ...  
++ * บรรณารักษ์: json, tv, rdf, xml และ yaml
++## ระบบปฏิบัติการ
++- **Linux (ตีทิว):** CentOS, Debian, Ubuntu, RedHat
++- **Windows (PowerShell):** 10, 2555, 2559
+++#อ้างอิง
++หลาม 3.7+
+++# สถาบันและ
+++# จาก PyPi (ง่ายที่สุด)
++### ติดตั้งเป็นแพ็คเกจ PyPi:
++อยาก: `pip install ws-sbom-generator`
+++# :
++ ``` ชิด
++ : ws_sbom_generator.py [-h] -u WS_USER_KEY -k WS_TOKEN [-s SCOPE_TOKEN] [-a WS_URL] [-t {json,tv,rdf,xml,yaml,all}] [-e EXTRA] [-o OUT_DIR]
++    
++ ขื่อ SBOM จากข้อมูล WhiteSource
++    
++ อาร์กิวติดตั้ง:
++ -h, --ช่วยแสดงข้อความช่วยเหลือนี้และออก
++ -u WS_USER_KEY, --userKey WS_USER_KEY
++ รหัสผู้ใช้ WS
++ -k WS_TOKEN, --token WS_TOKEN
++ ปรับปรุง WS
++ -s SCOPE_TOKEN, -- SCOPE_TOKEN
++ โฆษณาของรายงาน SBOM
++ -a WS_URL, --wsUrl WS_URL
++ WS URL
++ -t {json,tv,rdf,xml,yaml,all}, --type {json,tv,rdf,xml,yaml,all}
++สไลด์โชว์
++ -e EXTRA, --พิเศษ EXTRA
++ พิเศษของ SBOM
++ -o OUT_DIR, -- ออก OUT_DIR
++ ผลลัพธ์
++ ```
+++# อธิบาย:
++``` ชิว
++#สร้างรายงานการตรวจสอบเฉพาะ 
++ws_sbom_generator -u <WS_USER_KEY> -k <WS_ORG_TOKEN> -a app-eu -s <WS_PROJECT_TOKEN> -e /<path/to>/sbom_extra.json -o </path/reports>
+++ขอรายงาน JSON ภายในผลิตภัณฑ์ 
++ws_sbom_generator -u <WS_USER_KEY> -k <WS_ORG_TOKEN> -a https://di.whitesourcesoftware.com -s <WS_PRODUCT_TOKEN> -t json -e /<path/to>/sbom_extra.json -o </path/reports >
++```
+++# ตู้คอนเทนเนอร์
++### ไฟล์:
++``` ชิว
++ นักถ่ายท่าดึง whitesourcetools/ws-sbom-generator:latest 
++ ```
++### ได้:
++``` ชิว
++นักท่าท่า --name ws-sbom-generator \ 
++ -v /<EXTRA_CONF_DIR>:/opt/ws-sbom-generator/sbom-generator/resources \ 
++ -v /<REPORT_OUTPUT_DIR>:/opt/ws-sbom-generator/sbom-generator/output \
++ -e WS_USER_KEY=<USER_KEY> \ 
++ -e WS_TOKEN=<ORG_WS_TOKEN> \
++ -e WS_SCOPE=<WS_SCOPE> \
++ -e WS_URL=<WS_URL> \
++ -e WS_TYPE=<WS_TYPE> \
++ whitesourcetools/ws-sbom-generator 
++```
+++# พิเศษพิเศษ (--พิเศษ/-e)
++`` json
++{
++ "เนมสเปซ": "http://CreatorWebsite/pathToSpdx/DocumentName-UUID",
++ "org_email": "org@email.address",
++ "บุคคล": "ชื่อบุคคล",
++ "person_email": "person@email.address"
++}
++```
+ ชื่อเรื่อง: เกี่ยวกับสาขาที่ได้รับการคุ้มครอง
+ บทนำ: 'คุณสามารถปกป้องสาขาที่สำคัญได้โดยการตั้งค่ากฎการป้องกันสาขา ซึ่งกำหนดว่าผู้ทำงานร่วมกันสามารถลบหรือบังคับให้พุชไปยังสาขาและกำหนดข้อกำหนดสำหรับการพุชไปยังสาขา เช่น ผ่านการตรวจสอบสถานะหรือประวัติการคอมมิตเชิงเส้น'
+ ผลิตภัณฑ์: '{% data reusables.gated-features.protected-branches %}'

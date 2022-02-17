@@ -1,0 +1,804 @@
+# This workflow will build a package using Gradle and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
+on:
+  push:
+    branches:
+      - master
+name: Deploy Extension
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - uses: lannonbr/vsce-action@3.0.0
+        with:
+          args: "publish -p $VSCE_TOKEN"
+        env:
+          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+- ชื่อ: GitHub Action สำหรับ vsce
+  ใช้: lannonbr/vsce-action@3.0.0
+ความสะดวก (ATIA)	ไหว้	Judy Brewer	David Dikter
+พันธมิตรเพื่อนวัตกรรมอินเทอร์เน็ตของสรรพสิ่ง (AIOTI)	เว็บของสิ่งต่างๆ	Dave Raggett	Patrick Guillemin
+Apache The Apache Software Foundation	โอเพ่นซอร์ส	Eric Prud'hommeaux	บอร์ด Apache
+สมาคมอุตสาหกรรมวิทยุและธุรกิจ (ARIB)	สื่อและความบันเทิง
+Timed Text
+ฟิลิปเป้ เลอ เฮกาเร็ต
+คาซูยูกิ อาชิมูระ	Yusei Nishimoto (Timed Text)
+Joji Urano (สื่อและความบันเทิง)
+คณะกรรมการระบบโทรทัศน์ขั้นสูง (ATSC)	สื่อและความบันเทิง ,
+Timed Text	คาซึยูกิ อาชิมูระ ,
+ฟิลิปเป้ เลอ เฮกาเร็ต	Madeleine Noland
+Michael Dolan
+CableLabs (สมาชิก W3C)	สื่อและความบันเทิง	Philippe Le Hégaret	ตัวแทน AC
+คณะกรรมการมาตรฐานยุโรป (CEN)	ความเป็นส่วนตัวของผู้ประสานงานทั่วไป, WAI	ริโก้ เวนนิ่ง , จูดี้ บริวเวอร์, แดเนียลมอนตัลโว
+John Ketchell
+Barbara Gatti
+CEN (ELSSI EMD)	เว็บความหมาย	Eric Prud'hommeaux	David Leal
+CESI China Electronics Standardization Institute	ผู้ประสานงานทั่วไป
+WAI
+Judy Brewer	
+นางหยวน หยวน
+
+สมาคมเทคโนโลยีผู้บริโภค (CTA)	สื่อและความบันเทิง	Francois Daoust	Michael Bergman
+Continua Health Alliance	อุปกรณ์ API, มือถือ, HCLS	Dominique Hazael-Massieux	ชัค ปาร์คเกอร์
+โฆเซ่ มันริเก้ โลเปซ เด ลา ฟูเอนเต
+
+ฟอรัมอุตสาหกรรม DASH (DASH-IF)	สื่อและความบันเทิง , HTML ,
+TimedText	Michael[tm] Smith (HTML)
+Kazuyuki Ashimura (สื่อและความบันเทิง)
+Philippe Le Hégaret (TTML)	Iraj Sodagar
+ดิจิตอลทีวีกรุ๊ป	HTML , CSS , องค์ประกอบผ้าใบ, ส่วนขยายสื่อ , สื่อและความบันเทิง , การทดสอบ	คาซึยูกิ อาชิมูระ
+Francois Daoust
+
+Simon Gauntlett [ผู้อำนวยการฝ่ายเทคโนโลยี DTG], Chris Collis [Chair Security Group], George Robertson [Chair IP Delivery Group] , Ali Teffahi
+DCMI ดับลิน คอร์
+เว็บความหมาย	Ivan Herman	ตัวแทนเอซี
+สมาคมเดซี่	ไหว้	Judy Brewer	George Kerscher
+European Broadcasting Union (EBU, สมาชิก W3C)	สื่อและความบันเทิง ,	Francois Daoust	ตัวแทน AC
+ECHONET Consortium	WoT	คาซึยูกิ อาชิมูระ	โมริโอะ ฮิราฮาระ
+ECLASS	WoT	คาซึยูกิ อาชิมูระ	คริสเตียน บล็อก
+Ecma International	HTML, Web Apps, I18n, ความปลอดภัย,
+การทดสอบ
+ริโก้ เวนนิ่ง
+อิสต์วาน เซเบสเตียน
+คณะกรรมาธิการยุโรป
+DG CONNECT
+DG DIGIT
+
+ดีจี เอ็นเตอร์ไพรส์
+
+แพลตฟอร์มผู้มีส่วนได้ส่วนเสีย
+
+DG JRC
+
+ประสานงานทั่วไป
+
+จูดี้บริวเวอร์,
+
+ฟิลิปป์ ฮอชก้า,
+
+ริโก เวนนิ่ง,
+
+เจฟฟ์ จาฟ
+
+จากระดับข้าราชการถึง ป.ป.ช.
+
+ฟอรัมผู้ทุพพลภาพแห่งยุโรป (EDF)	ไหว้	แดเนียล มอนตัลโว
+อเลฮานโดร โมเลโด
+EMVCo	การชำระเงินทางเว็บ	เอียน เจคอบส์	Bastien Latge
+คณะทำงานร่วมองค์กรมาตรฐานยุโรป (ESO) (JWG) ด้าน eAccessibility	ไหว้	แดเนียล มอนตัลโว, จูดี้ บริวเวอร์, จอช โอ คอนเนอร์
+เฟอร์นันโด มาชิคาโด
+สถาบันมาตรฐานโทรคมนาคมแห่งยุโรป (ETSI)	ผู้ประสานงานทั่วไป
+(Sophia Antipolis, ERCIM, WAI)	
+ริโก เวนนิ่ง,
+
+Judy Brewer
+
+มาร์กอท ดอร์,
+
+ซาเวียร์ พีดนัวร์
+
+Mike Pluke และ Mathias Schneider สำหรับ M376
+
+คณะกรรมการกลางกำกับดูแลกิจการสื่อสาร (USA FCC)	ไหว้
+Judy Brewer	ซูซี่ โรเซน ซิงเกิลตัน
+พันธมิตร FIDO	การชำระเงินทางเว็บ ,
+ความปลอดภัย,
+เวนดี้ เซลท์เซอร์,
+เอียน เจคอบส์	โทนี่ นาดาลิน
+สมาคมเทคโนโลยีบริการทางการเงิน (FSTC)	ประสานงานทั่วไป	ราล์ฟ สวิค	Dan Schutzerกรรมการบริหาร (และตัวแทน AC)
+COVESA (เดิมชื่อ GENIVI)	ยานยนต์	คารีน บอร์เนซ	สตีฟ ครัมบ์
+โครงการริเริ่มระดับโลกสำหรับ ICT แบบรวม (G3ICT)	ไหว้	Judy Brewer	Axel Leblois
+GlobalPlatform	การรักษาความปลอดภัย , แพร่หลาย Web Application	เวนดี้ เซลท์เซอร์,
+เอียน เจคอบส์	Gil Bernabeu (ผู้อำนวยการด้านเทคนิค),
+Kevin Gillick
+GS1	HTML,
+เว็บความหมาย
+
+เจฟฟ์ จาฟ
+สตีเวน อาร์. แบรตต์ (CTO)
+สมาคม GSM (GSMA)	มือถือ , เครือข่ายที่เป็นมิตร CG	Philipp Hoschka
+J. Alan Bird
+David Hutton (GSMA), Paul Gosden (GSMA TSG), Natasha Rooney (ความสัมพันธ์โดยรวม)
+ไฮบริดบรอดแบนด์ทีวี (HbbTV)	สื่อและความบันเทิง	Francois Daoust	ปีเตอร์ แมคอะวอค ประธานร่วมกลุ่มข้อกำหนด HbbTV
+Hypercat Alliance	เว็บของสิ่งต่างๆ	Dave Raggett	Justin Anderson ผู้ก่อตั้ง Hypercat Alliance
+สมาคมอุตสาหกรรมการถ่ายภาพระหว่างประเทศ (I3A)	เว็บความหมาย, กราฟิก
+Chris Lilley
+
+เจมส์ เอ. เพย์ตัน
+ICANN
+(ผ่านกลุ่มประสานงานด้านเทคนิค )
+
+URI , IDN, ผู้ประสานงานทั่วไป, การประมูล
+เวนดี้ เซลท์เซอร์, เจฟฟ์ จาฟเฟ่	ซีอีโอ ประธานกรรมการ กรรมการ พนักงาน
+สมาคมสีนานาชาติ (ICC)	กราฟิก , CSS	Chris Lilley	วิลเลียม หลี่
+ICT Standardization Steering Group, DG Enterprise	ประสานงานทั่วไป	ริโก้ เวนนิ่ง	
+คิริทกุมาร ลาเธีย
+
+Isabelle Valet-Harper
+
+Anne Lehouck
+
+ฟอรัมการเผยแพร่ดิจิทัลระหว่างประเทศ (EPUB/OpenEBook - IDPF– AAL WG)	ดูการควบรวมกิจการ
+Ivan Herman
+
+จอร์จ เคอร์เชอร์ (WAI)
+โคจิ อิชิอิ (CSS)
+จุน ฟูจิซาวะ (SVG)
+
+เบรดี้ ดูก้า (สไตล์)
+
+มาตรฐาน IEEE	ประสานงานทั่วไป	
+เจฟฟ์ จาฟ
+
+คาเรน แมคเคบ ( OpenStand )
+คณะทำงานด้านวิศวกรรมอินเทอร์เน็ต (IETF)	ความปลอดภัย ความเป็นส่วนตัว WebRTC เว็บของสิ่งต่างๆ
+ติดต่อประสานงานทั่วไป ฉัน*
+
+Wendy Seltzer , Samuel Weiler,
+ดูเพิ่มเติม: public-ietf-w3c
+Philippe Le Hégaret (สำหรับประเภทสื่อ) ,
+เจฟฟ์ จาฟ
+
+มาร์ติน ทอมสัน
+เลสลี่ ไดเกิล, รัส เฮาส์ลีย์ ( OpenStand )
+
+IFAA (พันธมิตรรับรองความถูกต้องทางการเงินทางอินเทอร์เน็ต)	การชำระเงินทางเว็บ , ความปลอดภัย	
+Wendy Seltzer
+
+เหวินป๋อหยาง
+ฟอรัมการกำกับดูแลอินเทอร์เน็ต (IGF)	ประสานงานทั่วไป	
+Wendy Seltzer
+
+เลขาธิการ IGF UN ประธาน
+IGF Dynamic Coalition เกี่ยวกับการเข้าถึงและความพิการ (DCAD)	ไหว้	Judy Brewer
+Andrea Saks
+IMS Global Learning Consortium, Inc.	ไหว้	Judy Brewer	จุฑา เตรวิรานุส
+สมาคมอินเทอร์เน็ตอุตสาหกรรม (IIC)	เว็บของสิ่งต่างๆ	Dave Raggett	
+Skyler Lew Stephen Mellor
+
+อุตสาหกรรม 4.0	เว็บของสิ่งต่างๆ	Dave Raggett	ศ.ดีดริช (Universität Magdeburg)
+IPTV Forum Japan	สื่อและความบันเทิง , HTML , DAP , WebApps	
+Kazuyuki Ashimura (สื่อและความบันเทิง HTML), Dominique Hazaël-Massieux (DAP),
+
+โชโซ ฟุคุอิ
+สภาโทรคมนาคมระหว่างประเทศ (IPTC)	เว็บความหมาย	
+Ivan Herman
+
+มิชา วูล์ฟ
+Michael Steidl
+
+สถานะISO JTC 1 PAS , ARO	ประสานงานทั่วไป	เจฟฟ์ แจฟเฟ่, จูดี้ บริวเวอร์
+Norbert Bensalem, PAS Mentor, IBM
+กะเหรี่ยง Higginbottom JTC 1 เลขา
+
+ISO JTC1/ SC2 และ WG2
+(สายสัมพันธ์ระดับ C)
+
+I18N	Richard Ishida	Mike Ksar
+ISO JTC1 / SC 24
+(สายสัมพันธ์ระดับ C)
+
+กราฟฟิค , PNG	Chris Lilley	ฌอง สไตรด์
+ISO JTC1 / SC 32
+(สายสัมพันธ์ระดับ C)
+
+XML และ Dublin Core	Ivan Herman	จิม เมลตัน
+ISO JTC1/ SC 34 XML, EPUB
+(ผู้ประสานงานระดับ C)
+XML,
+Digital Publishing
+Ivan Herman
+มาโกโตะ มูราตะ
+ISO JTC1 SC35 WG6	ไหว้	
+Judy Brewer
+
+Janina Sajka
+ISO JTC1/ SC 29 / WG1 (JPEG)
+(สายสัมพันธ์ระดับ C)
+
+กราฟิก ,
+SVG
+
+Chris Lilley	
+เดวิด ซิงเกอร์
+
+คุณมายูมิ โคอิเกะ
+
+ISO JTC1/ SC 29 /WG03 (MPEG)
+(สายสัมพันธ์ระดับ C)
+
+กราฟิก , สื่อและความบันเทิง
+แบบอักษร, ข้อความหมดเวลา
+
+Atsushi Shimono (ข้อความหมดเวลา)
+Chris Lilley (SVG, แบบอักษร)
+คาซึยูกิ อาชิมูระ (สื่อและความบันเทิง)
+
+Dr. Jean-Claude Dufourd
+ดูคำชี้แจงการประสานงานของ XG
+
+คุณมายูมิ โคอิเกะ
+
+เลขานุการ SC 29
+
+Vladimir Levantovsky
+
+ISO TC 68/ ทองคำขาว 4
+(สายสัมพันธ์คลาส D)
+
+บริการเว็บ (ด้าน ISO: บริการทางการเงิน)	
+อีฟ ลาฟอน
+
+Matthew Rawlings
+ISO TC 68, TG1 (มาตรฐานบัตร) และ WG10 (บริการทางการเงินบนมือถือ)
+(สายสัมพันธ์คลาส D)
+
+การชำระเงินผ่านเว็บ (ด้าน ISO: บริการทางการเงิน)	เอียน เจคอบส์	เคลมองต์ เชโวเช่
+กลุ่มการจัดการการลงทะเบียนISO 20022
+(สายสัมพันธ์คลาส D)
+
+การชำระเงินทางเว็บ	เอียน เจคอบส์	ทอม ดันบาร์, คริส เคเทลส์
+ISO/IEC JTC 1/SC 41	เว็บของสิ่งต่างๆ	Dave Raggett	
+ซังกึน ยู
+
+ISO TC 204 ระบบขนส่งอัจฉริยะ/WG 1, 3, 9, 10, 14	ยานยนต์	คารีน บอร์เนซ	
+Adrian Guan
+
+ISO TC 211 ข้อมูลภูมิศาสตร์	ข้อมูลเชิงพื้นที่บนเว็บ	เบิร์ต บอส	
+เสื่อ Åhlin
+
+ISO TC 22/SC 31/WG 5,6,8,10 Extended Vehicle	ยานยนต์	คารีน บอร์เนซ	
+Eric Wern
+
+ISOC	ประสานงานทั่วไป	เจฟฟ์ จาฟ	Kathy Brown
+ITIC	ไหว้	Judy Brewer	เคน ซาเล็ทส์,
+ดอน ดอยช์
+สหภาพโทรคมนาคมระหว่างประเทศ (ITU)	ประสานงานทั่วไป	จูดี้ บริวเวอร์, แดเนียล มอนตัลโว
+พนักงาน ITU ต่างๆ
+ITU-T Focus Group เรื่องการเบี่ยงเบนความสนใจของคนขับ	MMI	คาซึยูกิ อาชิมูระ	สกอตต์ เพนน็อค ITU-T
+กลุ่ม ITU-T 13	MMI	คาซึยูกิ อาชิมูระ	กยูมยองลี
+ITU-T SG13 Focus Group on AI สำหรับการขับขี่แบบอัตโนมัติและแบบช่วยเหลือ (FG-AI4AD)	ยานยนต์	คารีน บอร์เนซ	ไบรน์ บัลคอมบ์
+ITU-T กลุ่ม 16 IPTV	สื่อและความบันเทิง , ป้ายบนเว็บ	
+คาซึยูกิ อาชิมูระ
+
+ชิเงยะ ซูซูกิ
+
+สำนักเลขาธิการ SG16 (Simão Campos, Rosa Angeles-León de Vivero)
+กลุ่ม ITU-T 20	เว็บของสิ่งต่างๆ	คาซึยูกิ อาชิมูระ , เจฟฟ์ จาฟเฟ	กยู เมียง ลี , คริสติน่า บูเอติ
+กิจกรรมประสานงานร่วมของ ITU สำหรับการจัดการข้อมูลประจำตัว (JCA-IdM)	เอกลักษณ์แบบกระจายอำนาจ	Ivan Herman	เจซ ปาร์ค
+คณะกรรมการการประชุม WWW ระหว่างประเทศIW3C2	การสื่อสาร	Ivan Herman	เวนดี้ ฮอลล์
+คณะกรรมการมาตรฐานอุตสาหกรรมของญี่ปุ่น X 8341-3 คณะทำงาน 2	ไหว้	Judy Brewer
+มาโกโตะ อูเอกิ (InfoAxia)
+กลุ่มโครนอส	Immersive Web , กลุ่มชุมชน WebGPU , คณะทำงานสถาปัตยกรรมแพลตฟอร์มที่สามารถเข้าถึงได้	Dominique Hazael-Massieux	นีล เทรเวตต์
+Linux Foundation Core Infrastructure Initiative	ความปลอดภัย	Wendy Seltzer	Emily Ratliff
+MovieLabs	สื่อและความบันเทิง	Francois Daoust	ตัวแทน AC
+สำนักงานสมาคมสารสนเทศแห่งชาติ ( สนช. )	ไหว้	Judy Brewer	จุนโฮฮยอน
+องค์กรเพื่อความก้าวหน้าของมาตรฐานข้อมูลที่มีโครงสร้าง (OASIS)
+สมาชิก W3C
+
+ประสานงานทั่วไป,
+HTML,
+
+ความปลอดภัย,
+
+SVG (ผู้ประสานงาน ODF)
+
+เจฟฟ์ จาฟ
+Daniel Greenwood (MIT) คณะกรรมการ eContracts ของ LegalXML
+
+Digital Signatures Extended (DSS-X) TC: Juan Carlos Cruellas
+eXtensible Access Control Markup Language (XACML) TC: Hal Lockhart
+Security Services (SAML) TC: Hal Lockhart
+Web Services Federation TC: Mike McIntosh (ผ่าน Bruce Rich)
+Web Services Secure Exchange (WS-SX) TC: ฮาล ล็อกฮาร์ต, เฟรเดอริค เฮิร์ช
+
+Scott McGrath, OASIS, ผู้อำนวยการอาวุโสฝ่ายบริการสมาชิก
+Michael Brauer, ODF TC
+Rob Weir, ODF TC
+
+ยานยนต์ ISAC	ยานยนต์	คารีน บอร์เนซ	นักวิเคราะห์ AutoISAC
+เปิดมูลนิธิการเชื่อมต่อ (OCF)	สื่อและความบันเทิง , การทดสอบ , Web of Things , MMI	คาซึยูกิ อาชิมูระ
+เดฟ แร็กเก็ตต์	ไมเคิล ริชมอนด์ ,
+คลาร์ก สตีเวนส์ ,
+เดวิด แมคคอล ,
+สก็อตต์ลอฟเกรน ,
+แดเนียล พาร์ค
+OECD ITAC	การประสานงานทั่วไป ความเป็นส่วนตัว มาตรฐานแบบเปิด	
+ริโก้ เวนนิ่ง , เวนดี้ เซลท์เซอร์
+
+คริสติน รันเนการ์ ISOC
+Open Geospatial Consortium (OGC)	ข้อมูลเชิงพื้นที่บนเว็บ	เบิร์ต บอส	สก็อตต์ ซิมมอนส์, Ingo Simonis
+OMA Open Mobile Alliance
+(หมดอายุMoU กับ OMA )
+
+CSS , กราฟิก HTML , MMI, Federated Social Web	คริส ลิลลีย์ , โดมินิกฮาซาเอล-มาสซีเยอ
+Kieran McAleese
+คิมโม ฮาโลเน่
+
+Mobile Web Initiative: Jari Alvinen
+
+เว็บโซเชียลส่วนกลาง: Goix Laurent Walter
+
+วิคตอเรีย เกรย์ .
+
+กลุ่มการจัดการวัตถุ (OMG)	บริการเว็บDOM	Philippe Le Hégaret	เจมส์ เนไมอาห์
+OneM2M	เว็บของสิ่งต่างๆ	Dave Raggett	หย่งจิง จาง
+OpenMath Society	MathML	เบิร์ต บอส	
+เดวิด คาร์ไลล์
+
+มูลนิธิโอพีซี	เว็บของสิ่งต่างๆ	Dave Raggett	Stefan Hoppe
+เปิดโครงการความปลอดภัยแอปพลิเคชันเว็บ (OWASP)	
+ความปลอดภัย, P rivacy, TAG
+
+Wendy Seltzer	เซบาสเตียน เดเลียร์สนีเดอร์
+สมาคมวิทยาศาสตร์เว็บความหมาย (SWSA)	เว็บความหมาย , eGov	Ivan Herman	เจมส์ เฮนดเลอร์
+SMPTE	สื่อและความบันเทิง
+Timed Text	Philippe Le Hégaret	ไมค์ โดแลน
+PCI คณะมนตรีความมั่นคง	การชำระเงินทางเว็บ	เอียน เจคอบส์	ลอเรน ฮอลโลเวย์, ทรอย ลีช
+The Open Group	ติดต่อประสานงานทั่วไปเว็บของสรรพสิ่ง	
+Dave Raggett
+
+ สกอตต์แฮนเซ่น; Chris Harding
+สมาคมเทคโนโลยีโทรคมนาคม (ททท.)	สื่อและความบันเทิง	คาซึยูกิ อาชิมูระ
+ดงฮุน ลี
+Trillium-II	ข้อมูล	Eric Prud'hommeaux	 Harold Solbrig
+Unicode	I18N	Richard Ishida	 มาร์ค เดวิส
+ยูเนสโก	I18N , WAI , ผู้ประสานงานทั่วไป	ริชาร์ด อิชิดะ , จูดี้ บริวเวอร์	Axel Plathe , Claudio Menezes , Irmgarda Kasinskaite
+ฟอรัมการชำระเงินของสหรัฐอเมริกา	การชำระเงินทางเว็บ	เอียน เจคอบส์	แรนดี้ แวนเดอร์ฮูฟ
+ฟอรั่มผู้ขาย	การชำระเงินทางเว็บ	เจ. อลัน เบิร์ด	Paul Rogers
+ฟอรั่ม VoiceXML
+( MoU พร้อมฟอรั่ม VoiceXML )
+
+เบราว์เซอร์เสียง , MMI	คาซึยูกิ อาชิมูระ	มิเชล ฮันท์
+Web3D Consortiumหน้านี้ →
+ตารางติดต่อ •
+ภารกิจของการประสานงานระหว่างประเทศของ W3C  •
+การติดต่อ W3C เพื่อประสานงาน •
+เกี่ยวกับตารางประสานงาน •
+ข้อควรพิจารณาในการจัดตั้งผู้ประสานงาน •
+W3C และมาตรฐานการล่มสลาย
+หลายองค์กรนอกเหนือจาก W3C ได้พัฒนามาตรฐานสำหรับอินเทอร์เน็ตหรือเว็บ เพื่อประสานงานการพัฒนาเว็บ W3C มีส่วนเกี่ยวข้องกับองค์กรจำนวนมากหลังจากพิจารณาต้นทุนและผลประโยชน์อย่างรอบคอบแล้ว
+
+ตามที่กำหนดไว้ในเอกสารกระบวนการของ W3Cคำว่า "ผู้ประสานงาน" ใช้เพื่ออ้างถึงการประสานงานของกิจกรรมกับองค์กรต่างๆ ผ่านกลไกต่างๆ ตั้งแต่การเป็นสมาชิกที่ไม่เป็นทางการไปจนถึงการเป็นสมาชิกร่วมกัน หรือแม้แต่ข้อตกลงที่เป็นทางการมากขึ้น การติดต่อประสานงานไม่ได้มีไว้เพื่อทดแทนการเป็นสมาชิก W3C
+
+W3C เป็นชุมชนที่กว้างขวางซึ่งครอบคลุมงานมาตรฐานใน W3C Working Groups และงานฟักไข่ใน W3C Community Groups (CGs) การแสดงรายชื่อผู้ประสานงานอย่างเป็นทางการกับ W3C ในนามของ CG ในหน้านี้มักไม่สนับสนุน เนื่องจากผลลัพธ์ CG ไม่ได้แสดงถึงฉันทามติของชุมชน W3C (แน่นอนว่าควรให้มีการประสานงานที่ไม่เป็นทางการเสมอ) หากกลุ่มภายนอก W3C ต้องการประสานงานกับ CG พวกเขาต้องเขียนเหตุผลและชัดเจนว่าพวกเขาเข้าใจว่างาน CG นั้นไม่มีบรรทัดฐาน หากมีคำขอดังกล่าว ควรส่งไปที่team-liaisons@w3.org เพื่อขออนุมัติ
+
+ติดต่อ W3C เกี่ยวกับผู้ประสานงานใหม่หรือที่มีอยู่
+
+ดัชนีความสัมพันธ์ → 3  • A  • B  • C  • D  • E  • F  • G • H • I  • J  • K  • L • M  • N • O • P • S  • T  • U  • V  • W
+
+โครงการความร่วมมือ3GPPรุ่นที่ 3	สื่อและความบันเทิง, MMI , SVG , Timed Text	คาซึยูกิ อาชิมูระ,
+คริส ลิลลีย์, ฟร็องซัว เดาสท์,
+
+ฟิลิปเป้ เลอ เฮกาเร็ต,
+
+3GPPL นามแฝง
+เปาโล อุไซ ,
+SVG: Tolga Capin
+
+โครงการแอคคอร์ด	การเรียกร้องที่ตรวจสอบได้
+Blockchain	ซานโดร ฮอว์เก	Peter Hunn
+คำอธิบายประกอบพันธมิตรความรู้ทั้งหมด (คณะกรรมการพวงมาลัย)	สำนักพิมพ์ดิจิทัล	Ivan Herman	แมเรียน มาร์โทน, แดน เวลีย์
+คณะกรรมการการเข้าถึง (สหรัฐอเมริกา)	ไหว้	Judy Brewer	David Capozzi
+สมาคมอุตสาหกรรมเทคโนโลยีสิ่งอำนวยความสะดวก (ATIA)	ไหว้	Judy Brewer	David Dikter
+พันธมิตรเพื่อนวัตกรรมอินเทอร์เน็ตของสรรพสิ่ง (AIOTI)	เว็บของสิ่งต่างๆ	Dave Raggett	Patrick Guillemin
+Apache The Apache Software Foundation	โอเพ่นซอร์ส	Eric Prud'hommeaux	บอร์ด Apache
+สมาคมอุตสาหกรรมวิทยุและธุรกิจ (ARIB)	สื่อและความบันเทิง
+Timed Text
+ฟิลิปเป้ เลอ เฮกาเร็ต
+คาซูยูกิ อาชิมูระ	Yusei Nishimoto (Timed Text)
+Joji Urano (สื่อและความบันเทิง)
+คณะกรรมการระบบโทรทัศน์ขั้นสูง (ATSC)	สื่อและความบันเทิง ,
+Timed Text	คาซึยูกิ อาชิมูระ ,
+ฟิลิปเป้ เลอ เฮกาเร็ต	Madeleine Noland
+Michael Dolan
+CableLabs (สมาชิก W3C)	สื่อและความบันเทิง	Philippe Le Hégaret	ตัวแทน AC
+คณะกรรมการมาตรฐานยุโรป (CEN)	ความเป็นส่วนตัวของผู้ประสานงานทั่วไป, WAI	ริโก้ เวนนิ่ง , จูดี้ บริวเวอร์, แดเนียลมอนตัลโว
+John Ketchell
+Barbara Gatti
+CEN (ELSSI EMD)	เว็บความหมาย	Eric Prud'hommeaux	David Leal
+CESI China Electronics Standardization Institute	ผู้ประสานงานทั่วไป
+WAI
+Judy Brewer	
+นางหยวน หยวน
+
+สมาคมเทคโนโลยีผู้บริโภค (CTA)	สื่อและความบันเทิง	Francois Daoust	Michael Bergman
+Continua Health Alliance	อุปกรณ์ API, มือถือ, HCLS	Dominique Hazael-Massieux	ชัค ปาร์คเกอร์
+โฆเซ่ มันริเก้ โลเปซ เด ลา ฟูเอนเต
+
+ฟอรัมอุตสาหกรรม DASH (DASH-IF)	สื่อและความบันเทิง , HTML ,
+TimedText	Michael[tm] Smith (HTML)
+Kazuyuki Ashimura (สื่อและความบันเทิง)
+Philippe Le Hégaret (TTML)	Iraj Sodagar
+ดิจิตอลทีวีกรุ๊ป	HTML , CSS , องค์ประกอบผ้าใบ, ส่วนขยายสื่อ , สื่อและความบันเทิง , การทดสอบ	คาซึยูกิ อาชิมูระ
+François Daoust
+
+Simon Gauntlett [DTG Technology Director], Chris Collis [Chair Security Group], George Robertson [Chair IP Delivery Group] , Ali Teffahi
+DCMI Dublin Core
+Semantic Web	Ivan Herman	AC Rep.
+DAISY Consortium	WAI	Judy Brewer	George Kerscher
+European Broadcasting Union (EBU, W3C Member)	Media and Entertainment,	François Daoust	AC Rep
+ECHONET Consortium	WoT	Kazuyuki Ashimura	Morio Hirahara
+ECLASS	WoT	Kazuyuki Ashimura	Christian Block
+Ecma International	HTML, Web Apps, I18n, Security,
+Testing
+Rigo Wenning
+Istvan Sebestyen
+European Commission
+DG CONNECT
+DG DIGIT
+
+DG Enterprise
+
+Multistakeholder Platform
+
+DG JRC
+
+Generic Liaisons
+
+Judy Brewer,
+
+Philipp Hoschka,
+
+Rigo Wenning,
+
+Jeff Jaffe,
+
+From Commissioner level to PO.
+
+European Disability Forum (EDF)	WAI	Daniel Montalvo
+Alejandro Moledo
+EMVCo	Web Payments	Ian Jacobs	Bastien Latge
+European Standards Organizations (ESO) Joint Working Group (JWG) on eAccessibility	WAI	Daniel Montalvo, Judy Brewer, Josh O Connor
+Fernando Machicado
+European Telecommunications Standards Institute (ETSI)	Generic Liaisons
+(Sophia Antipolis, ERCIM, WAI)	
+Rigo Wenning,
+
+Judy Brewer
+
+Margot Dor,
+
+Xavier Piednoir
+
+Mike Pluke, and Mathias Schneider for M376
+
+Federal Communications Commission (USA FCC)	WAI
+Judy Brewer	Suzy Rosen Singleton
+FIDO Alliance	Web Payments,
+Security,
+Wendy Seltzer,
+Ian Jacobs	Tony Nadalin
+Financial Services Technology Consortium (FSTC)	Generic Liaisons	Ralph Swick	Dan Schutzer, Executive Director (and AC Rep)
+COVESA (previously known as GENIVI)	Automotive	Carine Bournez	Steve Crumb
+Global Initiative for Inclusive ICTs (G3ICT)	WAI	Judy Brewer	Axel Leblois
+GlobalPlatform	Security, Ubiquitous Web Application	Wendy Seltzer,
+Ian Jacobs	Gil Bernabeu (Technical Director),
+Kevin Gillick
+GS1	HTML,
+Semantic Web
+
+Jeff Jaffe
+Steven R. Bratt (CTO)
+GSM Association (GSMA)	Mobile, Network Friendly CG	Philipp Hoschka
+J. Alan Bird
+David Hutton (GSMA), Paul Gosden (GSMA TSG), Natasha Rooney (Overall Relationship)
+Hybrid Broadcast Broadband TV (HbbTV)	Media and Entertainment	François Daoust	Peter MacAvock. Co-Chair HbbTV Requirements Group
+Hypercat Alliance	Web of Things	Dave Raggett	Justin Anderson, Founder Hypercat Alliance
+International Imaging Industry Association (I3A)	Semantic Web, Graphics
+Chris Lilley
+
+James A. Peyton
+ICANN
+(through Technical Liaison Group)
+
+URI, IDN, Generic Liaisons, Auctions
+Wendy Seltzer, Jeff Jaffe	CEO, Chairman, board members, staff
+International Color Consortium (ICC)	Graphics, CSS	Chris Lilley	William Li
+ICT Standardization Steering Group, DG Enterprise	Generic Liaisons	Rigo Wenning	
+Kiritkumar Lathia
+
+Isabelle Valet-Harper
+
+Anne Lehouck
+
+International Digital Publishing Forum (EPUB/OpenEBook - IDPF– AAL WG)	See Merger
+Ivan Herman
+
+George Kerscher (WAI)
+Koji Ishii (CSS)
+Jun Fujisawa (SVG)
+
+Brady Duga (Style)
+
+IEEE Standards	Generic Liaisons	
+Jeff Jaffe
+
+Karen McCabe (OpenStand)
+The Internet Engineering Task Force (IETF)	Security, Privacy, WebRTC, Web of Things.
+Generic Liaisons, I*
+
+Wendy Seltzer, Samuel Weiler,
+see also: public-ietf-w3c
+Philippe Le Hégaret (for media types),
+Jeff Jaffe
+
+Martin Thomson
+Leslie Daigle, Russ Housley (OpenStand)
+
+IFAA (Internet Finance Authentiation Alliance)	Web Payments, Security	
+Wendy Seltzer
+
+Wenbo Yang
+The Internet Governance Forum (IGF)	Generic Liaisons	
+Wendy Seltzer
+
+IGF UN Secretary, chair
+IGF Dynamic Coalition on Accessibility and Disability (DCAD)	WAI	Judy Brewer
+Andrea Saks
+IMS Global Learning Consortium, Inc.	WAI	Judy Brewer	Jutta Treviranus
+Industrial Internet Consortium (IIC)	Web of Things	Dave Raggett	
+Skyler Lew Stephen Mellor
+
+Industry 4.0	Web of Things	Dave Raggett	Prof Diedrich (Universität Magdeburg)
+IPTV Forum Japan	Media and Entertainment, HTML, DAP, WebApps	
+Kazuyuki Ashimura (Media and Entertainment, HTML), Dominique Hazaël-Massieux (DAP),
+
+Shozo Fukui
+International Press Telecommunications Council (IPTC)	Semantic Web	
+Ivan Herman
+
+Misha Wolf
+Michael Steidl
+
+ISO JTC 1 PAS status, ARO	Generic Liaisons	Jeff Jaffe, Judy Brewer
+Norbert Bensalem, PAS Mentor, IBM
+Karen Higginbottom JTC 1 secretary
+
+ISO JTC1/SC2 and its WG2
+(Class C Liaison)
+
+I18N	Richard Ishida	Mike Ksar
+ISO JTC1/SC 24
+(Class C Liaison)
+
+Graphics, PNG	Chris Lilley	Jean Stride
+ISO JTC1/SC 32
+(Class C Liaison)
+
+XML and Dublin Core	Ivan Herman	Jim Melton
+ISO JTC1/ SC 34 XML, EPUB
+(Class C Liaison)
+XML,
+Digital Publishing
+Ivan Herman
+Makoto Murata
+ISO JTC1 SC35 WG6	WAI	
+Judy Brewer
+
+Janina Sajka
+ISO JTC1/SC 29/WG1 (JPEG)
+(Class C Liaison)
+
+Graphics,
+SVG
+
+Chris Lilley	
+David Singer
+
+Ms. Mayumi Koike
+
+ISO JTC1/SC 29/WG03 (MPEG)
+(Class C Liaison)
+
+Graphics, Media and Entertainment
+Fonts, Timed Text
+
+Atsushi Shimono (Timed Text)
+Chris Lilley (SVG, Fonts)
+Kazuyuki Ashimura (Media and Entertainment)
+
+Dr. Jean-Claude Dufourd
+See the XG liaison statement
+
+Ms. Mayumi Koike
+
+Secretary, SC 29
+
+Vladimir Levantovsky
+
+ISO TC 68/ WG 4
+(Class D Liaison)
+
+Web Services (on ISO side: Financial services)	
+Yves Lafon
+
+Matthew Rawlings
+ISO TC 68, TG1 (Card standards) and WG10 (mobile financial services)
+(Class D Liaison)
+
+Web Payments (on ISO side: Financial services)	Ian Jacobs	Clément CHEVAUCHÉ
+ISO 20022 Registration Management Group.
+(Class D Liaison)
+
+Web Payments	Ian Jacobs	Tom Dunbar, Kris Ketels
+ISO/IEC JTC 1/SC 41	Web of Things	Dave Raggett	
+Sangkeun YOO
+
+ISO TC 204 Intelligent Transportation Systems/WG 1, 3, 9, 10, 14	Automotive	Carine Bournez	
+Adrian Guan
+
+ISO TC 211 Geographic information	Spatial Data on the Web	Bert Bos	
+Mats Åhlin
+
+ISO TC 22/SC 31/WG 5,6,8,10 Extended Vehicle	Automotive	Carine Bournez	
+Eric Wern
+
+ISOC	Generic Liaisons	Jeff Jaffe	Kathy Brown
+ITIC	WAI	Judy Brewer	Ken Saelets,
+Don Deutsch
+International Telecommunication Union (ITU)	Generic Liaisons	Judy Brewer, Daniel Montalvo
+Various ITU staff
+ITU-T Focus Group on Driver Distraction	MMI	Kazuyuki Ashimura	Scott Pennock ITU-T
+ITU-T Group 13	MMI	Kazuyuki Ashimura	Gyu Myoung Lee
+ITU-T SG13 Focus Group on AI for autonomous and assisted driving (FG-AI4AD)	Automotive	Carine Bournez	Bryn Balcombe
+ITU-T Group 16 IPTV	Media and Entertainment, Web-based Signage	
+Kazuyuki Ashimura
+
+Shigeya Suzuki
+
+SG16 Secretariat (Simão Campos, Rosa Angeles-León de Vivero)
+ITU-T Group 20	Web of Things	Kazuyuki Ashimura, Jeff Jaffe	Gyu Myoung Lee, Cristina Bueti
+ITU Joint Coordination Activity for Identity Management (JCA-IdM)	Decentralized Identity	Ivan Herman	Jace Park
+IW3C2 International WWW Conference Committee	Communications	Ivan Herman	Wendy Hall
+Japanese Industrial Standards Committee, X 8341-3 Working Group 2	WAI	Judy Brewer
+Makoto Ueki (InfoAxia)
+Khronos Group	Immersive Web, WebGPU Community Group, Accessible Platform Architecture Working Group	Dominique Hazael-Massieux	Neil Trevett
+Linux Foundation Core Infrastructure Initiative	Security	Wendy Seltzer	Emily Ratliff
+MovieLabs	Media and Entertainment	François Daoust	AC Rep
+National Information Society Agency (NIA)	WAI	Judy Brewer	Joon-Ho Hyun
+Organization for the Advancement of Structured Information Standards (OASIS)
+W3C Member
+
+Generic Liaisons,
+HTML,
+
+Security,
+
+SVG (ODF liaison)
+
+Jeff Jaffe
+Daniel Greenwood (MIT), LegalXML eContracts Committee
+
+Digital Signatures Extended (DSS-X) TC: Juan Carlos Cruellas
+eXtensible Access Control Markup Language (XACML) TC: Hal Lockhart
+Security Services (SAML) TC: Hal Lockhart
+Web Services Federation TC: Mike McIntosh (through Bruce Rich)
+Web Services Secure Exchange (WS-SX) TC: Hal Lockhart, Frederick Hirsch
+
+Scott McGrath, OASIS, Senior Director of Member Services
+Michael Brauer, ODF TC
+Rob Weir, ODF TC
+
+Automotive ISAC	Automotive	Carine Bournez	AutoISAC Analyst
+Open Connectivity Foundation (OCF)	Media and Entertainment, Testing, Web of Things, MMI	Kazuyuki Ashimura
+Dave Raggett	Michael Richmond,
+Clarke Stevens,
+David McCall,
+Scott Lofgren,
+Daniel Park
+OECD ITAC	การประสานงานทั่วไป ความเป็นส่วนตัว มาตรฐานแบบเปิด	
+ริโก้ เวนนิ่ง , เวนดี้ เซลท์เซอร์
+
+คริสติน รันเนการ์ ISOC
+Open Geospatial Consortium (OGC)	ข้อมูลเชิงพื้นที่บนเว็บ	เบิร์ต บอส	สก็อตต์ ซิมมอนส์, Ingo Simonis
+OMA Open Mobile Alliance
+(หมดอายุMoU กับ OMA )
+
+CSS , กราฟิก HTML , MMI, Federated Social Web	คริส ลิลลีย์ , โดมินิกฮาซาเอล-มาสซีเยอ
+Kieran McAleese
+คิมโม ฮาโลเน่
+
+Mobile Web Initiative: Jari Alvinen
+
+เว็บโซเชียลส่วนกลาง: Goix Laurent Walter
+
+วิคตอเรีย เกรย์ .
+
+กลุ่มการจัดการวัตถุ (OMG)	บริการเว็บDOM	Philippe Le Hégaret	เจมส์ เนไมอาห์
+OneM2M	เว็บของสิ่งต่างๆ	Dave Raggett	หย่งจิง จาง
+OpenMath Society	MathML	เบิร์ต บอส	
+เดวิด คาร์ไลล์
+
+มูลนิธิโอพีซี	เว็บของสิ่งต่างๆ	Dave Raggett	Stefan Hoppe
+เปิดโครงการความปลอดภัยแอปพลิเคชันเว็บ (OWASP)	
+ความปลอดภัย, P rivacy, TAG
+
+Wendy Seltzer	เซบาสเตียน เดเลียร์สนีเดอร์
+สมาคมวิทยาศาสตร์เว็บความหมาย (SWSA)	เว็บความหมาย , eGov	Ivan Herman	เจมส์ เฮนดเลอร์
+SMPTE	สื่อและความบันเทิง
+Timed Text	Philippe Le Hégaret	ไมค์ โดแลน
+PCI คณะมนตรีความมั่นคง	การชำระเงินทางเว็บ	เอียน เจคอบส์	ลอเรน ฮอลโลเวย์, ทรอย ลีช
+The Open Group	ติดต่อประสานงานทั่วไปเว็บของสรรพสิ่ง	
+Dave Raggett
+
+ สกอตต์แฮนเซ่น; Chris Harding
+สมาคมเทคโนโลยีโทรคมนาคม (ททท.)	สื่อและความบันเทิง	คาซึยูกิ อาชิมูระ
+ดงฮุน ลี
+Trillium-II	ข้อมูล	Eric Prud'hommeaux	 Harold Solbrig
+Unicode	I18N	Richard Ishida	 มาร์ค เดวิส
+ยูเนสโก	I18N , WAI , ผู้ประสานงานทั่วไป	ริชาร์ด อิชิดะ , จูดี้ บริวเวอร์	Axel Plathe , Claudio Menezes , Irmgarda Kasinskaite
+ฟอรัมการชำระเงินของสหรัฐอเมริกา	การชำระเงินทางเว็บ	เอียน เจคอบส์	แรนดี้ แวนเดอร์ฮูฟ
+ฟอรั่มผู้ขาย	การชำระเงินทางเว็บ	เจ. อลัน เบิร์ด	Paul Rogers
+ฟอรั่ม VoiceXML
+( MoU พร้อมฟอรั่ม VoiceXML )
+
+เบราว์เซอร์เสียง , MMI	คาซึยูกิ อาชิมูระ	มิเชล ฮันท์
+Web3D Consortium
+(สมาชิก W3C)
+
+กราฟิก ,
+ประสานงานทั่วไป	Chris Lilley	Don Brutzman
+ภารกิจของ W3C International Liaisons
+(สมาชิก W3C)
+
+กราฟิก ,
+ประสานงานทั่วไป	Chris Lilley	Don Brutzman
+ภารกิจของ W3C International Liaisons
+W3C มุ่งมั่นที่จะปรับปรุง
+name: Gradle Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Build with Gradle
+      run: gradle build
+
+    # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
+    # the publishing section of your build.gradle
+    - name: Publish to GitHub Packages
+      run: gradle publish
+      env:
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
