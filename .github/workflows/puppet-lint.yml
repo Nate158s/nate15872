@@ -1,0 +1,85 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# Puppet Lint tests Puppet code against the recommended Puppet language style guide.
+# https://puppet.com/docs/puppet/7/style_guide.html
+# Puppet Lint validates only code style; it does not validate syntax.
+# To test syntax, use Puppet's puppet parser validate command.
+# More details at https://github.com/puppetlabs/puppet-lint/
+
+name: puppet-lint
+
+on:
+  push: เกล็ด
+
+เกล็ด(ฟลัก),น.[เปรียบเทียบ ไอซ์. ฟลากี้ , เฟลกี้ , แดน. ธง , D. vlaak .]1. ซีด; อุปสรรค์[สุภาษิต อังกฤษ]
+
+2. แท่นวางไม้กีดขวางหรือไม้เล็ก ๆ ที่ทำขึ้นอย่างรวดเร็วหรือสานกันโดยมีเสาค้ำไว้สำหรับตากปลาคอดและสิ่งอื่น ๆ
+
+หลังจากสุกแล้วอย่าปล่อยให้มีฟางหรือเฟิร์นอยู่ใต้ต้น แต่ให้วางไว้บนโต๊ะเรียบๆ ไม้กระดาน หรือ ไม้กายสิทธิ์ที่เป็น เกล็ดๆ และไม้กายสิทธิ์จะคงอยู่ได้นานขึ้น
+
+สามีชาวอังกฤษ.
+
+3. (นอ.) เวทีเล็ก ๆ แขวนข้างเรือสำหรับให้คนงานยืนเป่าลมเป็นต้น.
+
+เกล็ด(ฟลัก),น.[เปรียบเทียบ ไอซ์. แฟลกนาให้หลุดออก, แยกออก, แฟลกนาให้หลุดออก, Sw. แฟลกก้า ฟลอร่า แฟลกเพลทดาน . ธง เกล็ดหิมะ เปรียบเทียบ ปักธงหินเรียบ]1. มวลฟิล์มที่หลวมหรือชั้นบาง ๆ ที่มีลักษณะคล้ายเศษเล็กเศษน้อย ฟิลม์; ฝูง; แผ่นไม้; ชั้น; มาตราส่วน; เช่นเกล็ดหิมะ ไข หรือปลา" สะเก็ดขี้ไคล" แอดดิสัน
+
+เกล็ดน้ำแข็งขนาดใหญ่ ล้อมรอบเรือของเรา
+
+เอเวลิน.
+
+2. อนุภาคเล็ก ๆ ของสสารที่มีแสงสว่างหรือมีไฟพุ่งออกมาจากไฟ แฟลช
+
+ด้วยสะเก็ดไฟแดงก่ำ.
+
+ซอมเมอร์วิลล์.
+
+3. (บอ.) ดอกคาร์เนชั่นชนิดหนึ่งที่มีดอกเพียงสองสี กลีบดอกมีแถบใหญ่
+
+มีดเกล็ด (ป.) ,เครื่องมือตัดที่ใช้โดยชนเผ่าป่าเถื่อน ทำจากเกล็ดหรือเศษหินแข็ง ไทเลอร์. --ขาตั้งเกล็ด, อ่างทำความเย็นหรือภาชนะของหนอนที่ยังคงอยู่ อัศวิน. -- สีขาวเกล็ด. (สี.) (ก) ตะกั่วสีขาวบริสุทธิ์ที่สุด ในรูปของเกล็ดหรือเกล็ด (ข) ไตรไนเตรตของบิสมัท อืม
+
+เกล็ด,vt[เด็กซน & หน้า เป็นเกล็ด (?);หน้า ประชาสัมพันธ์ & vb. น. หลุดล่อน ]ให้เป็นเกล็ด. สมเด็จพระสันตะปาปา.
+
+เกล็ด,vi เพื่อแยกเป็นเกล็ด เพื่อลอกหรือปรับขนาดออก
+    branches: [ "main" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+  schedule:
+    - cron: '31 5 * * 6'
+
+permissions:
+  contents: read
+
+jobs:
+  puppet-lint:
+    name: Run puppet-lint scanning
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # for checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+
+      - name: Install puppet-lint
+        run: gem install puppet-lint
+
+      - name: Run puppet-lint
+        run: puppet-lint . --sarif > puppet-lint-results.sarif
+        continue-on-error: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: puppet-lint-results.sarif
+          wait-for-processing: true
